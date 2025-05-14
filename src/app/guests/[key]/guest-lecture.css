@@ -2,22 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px; /* Increased top/bottom padding */
+    padding: 40px 20px; 
     color: var(--text-light);
     font-family: 'Exo 2', sans-serif;
     width: 90%;
-    max-width: 900px; /* Slightly narrower for focused content */
-    margin: 30px auto; /* Centering the container */
-    background-color: rgba(0, 0, 0, 0.45); /* Slightly more opaque for readability */
-    border-radius: 12px; /* Slightly larger radius */
+    max-width: 900px; 
+    margin: 30px auto; 
+    background-color: rgba(0, 0, 0, 0.45); 
+    border-radius: 12px; 
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    position: relative; /* For potential absolute positioned elements inside */
-    z-index: 2; /* Ensure it's above background elements if any */
+    position: relative; 
+    z-index: 2; 
 }
 
 .lecture-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.8rem; /* Prominent title */
+    font-size: 2.8rem; 
     color: var(--accent-gold);
     text-transform: uppercase;
     margin-bottom: 25px;
@@ -36,11 +36,11 @@
 
 .lecture-content {
     width: 100%;
-    max-width: 800px; /* Content width */
+    max-width: 800px; 
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-light);
-    text-align: left; /* Default for content blocks */
+    text-align: left; 
 }
 
 .lecture-content h3 {
@@ -58,7 +58,7 @@
 .lecture-content ul,
 .lecture-content ol {
     margin-bottom: 15px;
-    padding-left: 30px; /* Indentation for lists */
+    padding-left: 30px; 
 }
 
 .lecture-content li {
@@ -105,7 +105,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .guest-lecture-container {
         width: 95%;
@@ -114,7 +114,7 @@
     }
 
     .lecture-title {
-        font-size: 2rem; /* Adjusted title size */
+        font-size: 2rem; 
     }
 
     .lecture-speaker {
@@ -122,7 +122,7 @@
     }
 
     .lecture-content {
-        font-size: 1rem; /* Adjusted content font size */
+        font-size: 1rem; 
     }
 
     .lecture-content h3 {

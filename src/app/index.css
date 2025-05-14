@@ -7,19 +7,19 @@
 body {
   background-image: linear-gradient(10deg, 
     var(--background-dark-red) 0%, 
-    color-mix(in srgb, var(--primary-deep-red) 30%, var(--background-dark-red) 70%) 10%, /* Adjusted from 15% */
-    var(--primary-deep-red) 20%, /* Adjusted from 30% */
-    color-mix(in srgb, var(--primary-deep-red) 60%, var(--secondary-fiery-orange) 40%) 35%, /* Adjusted from 45% */
-    var(--secondary-fiery-orange) 45%, /* Adjusted from 55%, orange starts even earlier */
-    color-mix(in srgb, var(--secondary-fiery-orange) 40%, var(--background-dark-red) 60%) 80%, /* Adjusted from 85%, defines end of prominent orange */
-    color-mix(in srgb, var(--background-dark-red) 80%, black 20%) 93%, /* Adjusted from 95% */
+    color-mix(in srgb, var(--primary-deep-red) 30%, var(--background-dark-red) 70%) 10%, 
+    var(--primary-deep-red) 20%, 
+    color-mix(in srgb, var(--primary-deep-red) 60%, var(--secondary-fiery-orange) 40%) 35%, 
+    var(--secondary-fiery-orange) 45%, 
+    color-mix(in srgb, var(--secondary-fiery-orange) 40%, var(--background-dark-red) 60%) 80%, 
+    color-mix(in srgb, var(--background-dark-red) 80%, black 20%) 93%, 
     var(--text-dark) 100%
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;
   color: var(--text-light);
-  overflow-x: hidden; /* Prevent horizontal scrollbar from slightly off-screen particles */
+  overflow-x: hidden; 
 }
 
 #shower-container {
@@ -28,102 +28,102 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Allows clicks to pass through */
-  overflow: hidden; /* Particles outside viewport are clipped */
-  z-index: 0; /* Reverted from 2 */
+  pointer-events: none; 
+  overflow: hidden; 
+  z-index: 0; 
 }
 
 .shower-particle {
   position: absolute;
-  width: 2px; /* Thin streak */
-  height: 70px; /* Length of the streak */
+  width: 2px; 
+  height: 70px; 
   background: linear-gradient(
     to bottom,
-    transparent 0%, /* Start transparent (top of particle) */
-    color-mix(in srgb, var(--accent-gold) 30%, transparent 70%) 20%, /* Start of fade-in for sparkle */
-    var(--accent-gold) 85%, /* Main bright color towards the tail */
-    color-mix(in srgb, var(--text-light) 60%, var(--accent-gold) 40%) 100% /* Brightest tip at the tail */
+    transparent 0%, 
+    color-mix(in srgb, var(--accent-gold) 30%, transparent 70%) 20%, 
+    var(--accent-gold) 85%, 
+    color-mix(in srgb, var(--text-light) 60%, var(--accent-gold) 40%) 100% 
   );
-  opacity: 0; /* Start invisible, animation handles fade-in */
+  opacity: 0; 
   
-  /* --fall-angle will be set by JavaScript */
-  /* The animation combines this rotation with translation */
+  
+  
   animation-name: fallAndFade;
   animation-timing-function: linear;
-  animation-fill-mode: forwards; /* Keeps particle hidden (opacity: 0) after animation */
+  animation-fill-mode: forwards; 
   
-  /* transform-origin for rotation, if not handled by animation keyframes directly */
-  transform-origin: 50% 0%; /* Rotate around top-center */
+  
+  transform-origin: 50% 0%; 
   box-shadow: 0 0 7px 1px color-mix(in srgb, var(--accent-gold) 35%, transparent);
 }
 
 @keyframes fallAndFade {
   0% {
-    transform: rotate(var(--fall-angle)) translateY(-120px); /* Rotate first, then translate along new Y-axis */
+    transform: rotate(var(--fall-angle)) translateY(-120px); 
     opacity: 0;
   }
   10% {
-    opacity: 0.9; /* Fade in */
+    opacity: 0.9; 
   }
   90% {
-    opacity: 0.7; /* Start fading out */
+    opacity: 0.7; 
   }
   100% {
-    transform: rotate(var(--fall-angle)) translateY(calc(100vh + 70px)); /* Rotate first, then translate */
+    transform: rotate(var(--fall-angle)) translateY(calc(100vh + 70px)); 
     opacity: 0;
   }
 }
 
-/* Ensure content like h1 is above the shower effect */
-h1 { /* Example, apply to your main content containers */
+
+h1 { 
     position: relative;
     z-index: 1;
 }
 
-/* New styles for page content */
+
 .page-wrapper {
   position: relative;
-  z-index: 1; /* Ensure page content is above the shower-container */
+  z-index: 1; 
 }
 
 .content-wrapper {
   position: relative;
-  z-index: 1; /* Reverted from 3 */
+  z-index: 1; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Ensure content is centered vertically */
-  text-align: center; /* Center text */
-  padding: 20px; /* Add some padding */
-  font-family: 'Exo 2', sans-serif; /* Default font for content wrapper */
+  min-height: 100vh; 
+  text-align: center; 
+  padding: 20px; 
+  font-family: 'Exo 2', sans-serif; 
 }
 
 .event-title {
   margin-bottom: 2rem;
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--text-light); /* Ensure text color is set */
-  font-family: 'Exo 2', sans-serif; /* Consistent with other text */
+  color: var(--text-light); 
+  font-family: 'Exo 2', sans-serif; 
 }
 
 .main-heading {
   margin-bottom: 1.5rem;
-  font-size: 4rem; /* Slightly increased size */
-  font-weight: 700; /* Orbitron bold */
-  color: var(--accent-gold); /* Example: Use accent color for main heading */
-  font-family: 'Orbitron', sans-serif; /* Futuristic font */
-  text-transform: uppercase; /* Often looks good with such fonts */
-  letter-spacing: 2px; /* Add some letter spacing */
-  text-shadow: 0 0 8px color-mix(in srgb, var(--accent-gold) 50%, transparent); /* Enhanced glow */
+  font-size: 4rem; 
+  font-weight: 700; 
+  color: var(--accent-gold); 
+  font-family: 'Orbitron', sans-serif; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent-gold) 50%, transparent); 
 }
 
 .tagline {
   margin-bottom: 3rem;
-  font-size: 1.9rem; /* Slightly increased size */
+  font-size: 1.9rem; 
   color: var(--text-light);
-  font-family: 'Exo 2', sans-serif; /* Elegant futuristic font */
-  font-weight: 300; /* Lighter weight for tagline */
+  font-family: 'Exo 2', sans-serif; 
+  font-weight: 300; 
   letter-spacing: 1px;
 }
 
@@ -146,29 +146,29 @@ h1 { /* Example, apply to your main content containers */
 }
 
 .action-button:hover {
-  background-color: color-mix(in srgb, var(--accent-gold) 85%, var(--text-light) 15%); /* Slightly lighter gold */
+  background-color: color-mix(in srgb, var(--accent-gold) 85%, var(--text-light) 15%); 
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* Styles for Not Found Page */
+
 .not-found-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 80px); /* Adjust if you have a fixed header/footer */
+  min-height: calc(100vh - 80px); 
   text-align: center;
   padding: 20px;
   color: var(--text-light);
   font-family: 'Exo 2', sans-serif;
   position: relative;
-  z-index: 1; /* Ensure it's above background particles */
+  z-index: 1; 
 }
 
 .not-found-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 6rem; /* Large and impactful */
+  font-size: 6rem; 
   color: var(--accent-gold);
   margin-bottom: 0.5rem;
   text-shadow: 0 0 10px color-mix(in srgb, var(--accent-gold) 50%, transparent);

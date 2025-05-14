@@ -1,11 +1,11 @@
 :root {
     --primary: white;
-    --primary-deep-red: #8C1C1C; /* Deep red from the upper sky */
-    --secondary-fiery-orange: #D95A2B; /* Fiery orange from the clouds/planet */
-    --accent-gold: #F2B705; /* Gold from the planet rings */
-    --background-dark-red: #591C1C; /* Darker shade for backgrounds or contrasts */
-    --text-light: #FDE8E2; /* A very light, slightly warm off-white for text */
-    --text-dark: #3D1212; /* A very dark red for text on lighter backgrounds */
+    --primary-deep-red: #8C1C1C; 
+    --secondary-fiery-orange: #D95A2B; 
+    --accent-gold: #F2B705; 
+    --background-dark-red: #591C1C; 
+    --text-light: #FDE8E2; 
+    --text-dark: #3D1212; 
 }
 
 .placer{
@@ -14,6 +14,6 @@
 
 @media screen and (max-width: 768px) {
     .placer {
-        height: 40px; /* Adjust the height for smaller screens */
+        height: 40px; 
     }
 }

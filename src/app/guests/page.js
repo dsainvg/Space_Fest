@@ -2,24 +2,23 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import './guests.css'; // Styles for this page
-import Link from 'next/link'; // Import Link component
+import './guests.css'; 
+import Link from 'next/link'; 
 
-// Assuming your rock images are in public/rocks/
 const rockImages = [
-    '/rocks/rock1.png', // Replace with your actual image path
-    '/rocks/rock2.png'  // Replace with your actual image path
+    '/rocks/rock1.png', 
+    '/rocks/rock2.png'  
 ];
 
 export default function InteractiveGuestLecturesPage() {
     const [guestScenes, setGuestScenes] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [activeSceneIndex, setActiveSceneIndex] = useState(0); // Tracks the active scene
+    const [activeSceneIndex, setActiveSceneIndex] = useState(0); 
 
     const sceneRefs = useRef([]);
 
     useEffect(() => {
-        fetch('/guests.json') // Assuming guests.json is in the public folder
+        fetch('/guests.json') 
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -34,7 +33,7 @@ export default function InteractiveGuestLecturesPage() {
                 }));
                 setGuestScenes(scenes);
                 setLoading(false);
-                // Initialize refs arrays based on scenes length
+                
                 sceneRefs.current = Array(scenes.length).fill(null).map((_, i) => sceneRefs.current[i] || React.createRef());
             })
             .catch(error => {
@@ -47,9 +46,9 @@ export default function InteractiveGuestLecturesPage() {
         if (loading || guestScenes.length === 0) return;
 
         const observerOptions = {
-            root: null, // observes intersections relative to the viewport
+            root: null, 
             rootMargin: '0px',
-            threshold: 0.7, // Trigger when 70% of the scene is visible
+            threshold: 0.7, 
         };
 
         const observerCallback = (entries) => {
@@ -94,8 +93,8 @@ export default function InteractiveGuestLecturesPage() {
             {guestScenes.map((scene, index) => (
                 <section 
                     key={scene.Link || index} 
-                    className={`guest-scene ${index === activeSceneIndex ? 'active-scene' : ''}`} // Added active-scene class
-                    ref={sceneRefs.current[index]} // Assign individual ref
+                    className={`guest-scene ${index === activeSceneIndex ? 'active-scene' : ''}`} 
+                    ref={sceneRefs.current[index]} 
                 >
                     <div className="rock-image-container">
                         <Image 

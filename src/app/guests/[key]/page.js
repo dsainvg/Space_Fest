@@ -2,7 +2,7 @@
 import './guest-lecture.css';
 import { notFound } from 'next/navigation';
 import { useState, useEffect, use } from 'react'; 
-import Link from 'next/link'; // Added import for Link
+import Link from 'next/link'; 
 
 export default function SomeguestLecturePage(props) { 
     const resolvedParams = use(props.params); 

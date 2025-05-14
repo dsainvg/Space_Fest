@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link'; // Correct import for Link
+import Link from 'next/link'; 
 import './navbar.css';
 import '../colour.css';
 import { useState } from 'react';
@@ -10,12 +10,11 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  // const isMenuOpen = false; // Replace with your state management
 
   return (
     <div className="navbar">
       <Link href="/">
-        {/* <img src={require('./Clgfest.jpeg')} alt="Logo" className="logo" /> */}
+        
       </Link>
       <button className="hamburger" onClick={toggleMenu}>
         ☰

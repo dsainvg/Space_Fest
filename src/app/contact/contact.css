@@ -7,8 +7,8 @@
     font-family: 'Exo 2', sans-serif;
     width: 90%;
     max-width: 1200px;
-    margin: 20px auto; /* Centering the container */
-    background-color: rgba(0, 0, 0, 0.3); /* Slight dark overlay for readability */
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
@@ -33,7 +33,7 @@
 .contact-rightpart {
     flex: 1;
     padding: 20px;
-    background-color: rgba(20, 20, 20, 0.5); /* Darker translucent background for sections */
+    background-color: rgba(20, 20, 20, 0.5);
     border-radius: 8px;
 }
 
@@ -59,7 +59,7 @@
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    width: calc(100% - 20px); /* Account for padding */
+    width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid var(--primary-deep-red);
     border-radius: 5px;
@@ -104,17 +104,17 @@
 
 .contact-info-item {
     display: flex;
-    align-items: flex-start; /* Align icon with the start of the text block */
+    align-items: flex-start;
     margin-bottom: 15px;
     font-size: 1rem;
     line-height: 1.6;
 }
 
 .contact-icon {
-    font-size: 1.5rem; /* Adjust icon size as needed */
+    font-size: 1.5rem;
     color: var(--accent-gold);
     margin-right: 15px;
-    min-width: 25px; /* Ensure icons align nicely */
+    min-width: 25px;
     text-align: center;
 }
 
@@ -123,7 +123,6 @@
     color: var(--text-light);
 }
 
-/* General form styling (can be overridden by more specific component CSS) */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -134,14 +133,14 @@ input[type="url"],
 textarea,
 select {
     padding: 10px;
-    margin-bottom: 10px; /* Default spacing */
+    margin-bottom: 10px;
     border: 1px solid var(--primary-deep-red);
     border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.3); /* Dark translucent background */
+    background-color: rgba(0, 0, 0, 0.3);
     color: var(--text-light);
     font-family: 'Exo 2', sans-serif;
     font-size: 1rem;
-    box-sizing: border-box; /* Ensures padding and border don't add to width/height */
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus,
@@ -158,8 +157,6 @@ select:focus {
     box-shadow: 0 0 5px color-mix(in srgb, var(--accent-gold) 70%, transparent);
 }
 
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .maintitle {
         font-size: 2.2rem;
@@ -171,7 +168,7 @@ select:focus {
     .contact-leftpart,
     .contact-rightpart {
         width: 100%;
-        margin-bottom: 20px; /* Add space between stacked sections */
+        margin-bottom: 20px;
     }
     .contact-leftpart:last-child,
     .contact-rightpart:last-child {
@@ -179,22 +176,21 @@ select:focus {
     }
 }
 
-/* Styles for the Message Sent Page */
 .message-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 100px); /* Adjust based on placer/navbar height */
+    min-height: calc(100vh - 100px);
     padding: 0 20px;
     text-align: center;
     color: var(--text-light);
     font-family: 'Exo 2', sans-serif;
-    background-color: rgba(0, 0, 0, 0.4); /* Consistent with other containers */
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     width: 80%;
     max-width: 700px;
-    margin: 50px auto 0 auto; /* Centering the container */
+    margin: 50px auto 0 auto;
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
@@ -217,11 +213,11 @@ select:focus {
 .message-actions {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    flex-wrap: wrap;
     justify-content: center;
 }
 
-.message-button { /* Reuses .action-button styles from index.css if available, or define here */
+.message-button {
     padding: 12px 25px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -232,7 +228,7 @@ select:focus {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    text-decoration: none; /* For <a> tags styled as buttons */
+    text-decoration: none;
     font-family: 'Orbitron', sans-serif;
 }
 

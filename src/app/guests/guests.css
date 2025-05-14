@@ -1,21 +1,21 @@
 .interactive-guest-container {
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory; /* Enables smooth vertical snapping */
-    background-color: transparent; /* Changed from dark-red to transparent */
-    color: var(--text-light, #e0e0e0); /* Fallback light text */
+    scroll-snap-type: y mandatory; 
+    background-color: transparent; 
+    color: var(--text-light, #e0e0e0); 
     font-family: 'Exo 2', sans-serif;
 }
 
 .guest-scene {
-    position: relative; /* Ensure proper stacking context */
+    position: relative; 
     display: flex;
-    flex-direction: column; /* Ensure rock is above details */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
     padding: 20px;
     box-sizing: border-box;
-    overflow: hidden; /* Hide rock when off-screen */
+    overflow: hidden; 
     perspective: 1000px;
     height: 100vh;
     scroll-snap-align: start;
@@ -23,21 +23,21 @@
 
 .guest-details-container {
     display: flex;
-    flex-direction: row; /* Ensures image and text block are side-by-side */
+    flex-direction: row; 
     justify-content: center;
-    align-items: center; /* Vertically aligns image and text block */
+    align-items: center; 
     padding: 20px;
-    background-color: transparent; /* Changed for text to appear on rock */
-    max-width: 85dvw; /* Increased card width further */
-    min-height: 400px; /* Ensure enough height for content */
+    background-color: transparent; 
+    max-width: 85dvw; 
+    min-height: 400px; 
 }
 
 .guest-image {
-    height: 225px; /* Increased size */
-    width: 225px;  /* Increased size */
-    border-radius: 10px; /* Rounded corners, no longer circular */
+    height: 225px; 
+    width: 225px;  
+    border-radius: 10px; 
     object-fit: cover;
-    margin-right: 20px; /* Space between guest image and text block */
+    margin-right: 20px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     flex-shrink: 0;
 }
@@ -46,26 +46,26 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Aligns text to the left */
-    text-align: left; /* Ensures text within this block is left-aligned */
-    flex: 1; /* Allows text content to take up available space */
+    align-items: flex-start; 
+    text-align: left; 
+    flex: 1; 
 }
 
 .guest-details-container h2 {
     font-family: 'Orbitron', sans-serif;
     color: var(--accent-gold, #FFD700);
-    font-size: clamp(1.6rem, 3.5vw, 2.5rem); /* Slightly adjusted font size */
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem); 
     margin-bottom: 10px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7), 0 0 8px color-mix(in srgb, var(--accent-gold, #FFD700) 50%, transparent); /* Enhanced for readability */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7), 0 0 8px color-mix(in srgb, var(--accent-gold, #FFD700) 50%, transparent); 
 }
 
 .guest-details-container h3 {
     font-family: 'Exo 2', sans-serif;
     color: var(--secondary-fiery-orange, #FF8C00);
-    font-size: clamp(1.1rem, 2.2vw, 1.5rem); /* Slightly adjusted font size */
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem); 
     margin-bottom: 8px;
     font-weight: 400;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Added for readability */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); 
 }
 
 .guest-details-container p {
@@ -73,11 +73,11 @@
     font-size: clamp(0.85rem, 1.8vw, 1.05rem); 
     line-height: 1.6;
     color: var(--text-light, #f0f0f0);
-    max-height: 28vh; /* Increased max-height for more text space */
+    max-height: 28vh; 
     overflow-y: auto;
     padding-right: 10px;
     margin-bottom: 15px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Added for readability */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
 }
 
 .guest-text-content a {
@@ -85,7 +85,7 @@
     padding: 10px 20px;
     margin-top: 15px;
     background-color: var(--accent-gold, #FFD700);
-    color: var(--text-dark, #3D1212); /* Dark text for contrast on gold */
+    color: var(--text-dark, #3D1212); 
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
@@ -98,92 +98,78 @@
 .guest-text-content a:hover,
 .guest-text-content a:focus {
     background-color: color-mix(in srgb, var(--accent-gold, #FFD700) 85%, var(--text-light, #f0f0f0) 15%);
-    transform: translateY(-2px); /* Slight lift on hover/focus */
+    transform: translateY(-2px); 
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .rock-image-container {
-    /* Removed absolute positioning, top, left, z-index, filter: blur */
-    /* It's now a flex item */
-    opacity: 0; /* Start hidden */
-    transform: translateY(-100vh) scale(0.7); /* Start far above and smaller */
+    opacity: 0; 
+    transform: translateY(-100vh) scale(0.7); 
     will-change: transform, opacity;
-    /* Ensure it doesn't push content too much, adjust as needed */
-    margin-bottom: 0px; /* Reset to a simple value, or small positive like 10px if a slight gap before overlap is desired */
-    /* transition is not needed here as animation handles it */
+    margin-bottom: 0px; 
 }
 
 .guest-scene.active-scene .rock-image-container {
-    animation: rock-fall 2.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards; /* Slightly longer duration for more pronounced effect */
-    animation-delay: 0.1s; /* Slight delay before rock falls */
+    animation: rock-fall 2.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards; 
+    animation-delay: 0.1s; 
 }
 
 @keyframes rock-fall {
     0% {
         opacity: 0;
-        transform: translateY(-110vh) scale(0.6) rotate(-25deg); /* Start further up, smaller, more rotation */
+        transform: translateY(-110vh) scale(0.6) rotate(-25deg); 
     }
     45% {
-        /* Falling past the card, towards the bottom of the 100vh scene */
         opacity: 1;
-        transform: translateY(80vh) scale(1.2) rotate(20deg); /* Increased fall distance, adjusted scale/rotation */
+        transform: translateY(80vh) scale(1.2) rotate(20deg); 
     }
     65% {
-        /* Bouncing back up - first major bounce from a lower point */
         transform: translateY(-25vh) scale(0.85) rotate(-15deg); 
     }
     80% {
-        /* Second smaller bounce, settling */
         transform: translateY(10vh) scale(1.08) rotate(8deg);
     }
     90% {
-        /* Almost settled */
         transform: translateY(-4vh) scale(0.97) rotate(-3deg);
     }
     100% {
         opacity: 1;
-        transform: translateY(0) scale(1) rotate(0deg); /* Final resting position */
+        transform: translateY(0) scale(1) rotate(0deg); 
     }
 }
 
 .guest-details-main-container {
-    position: relative; /* Ensure it stacks above the rock */
-    z-index: 1; /* Place above the rock, ensuring it's in front for the overlap */
-    opacity: 0; /* Hidden by default */
-    transform: translateZ(50px) translateY(30px); /* Start slightly further down to make the upward movement more noticeable */
-    /* Updated transition with delay and custom easing for transform */
+    position: relative; 
+    z-index: 1; 
+    opacity: 0; 
+    transform: translateZ(50px) translateY(30px); 
     transition: opacity 0.6s ease-in-out 1.5s, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s; 
-    will-change: opacity, transform; /* Optimize for animations */
+    will-change: opacity, transform; 
 }
 
 .guest-details-main-container.active-details {
-    opacity: 1; /* Visible when active */
-    /* Pull the container up by approx. half the rock's max-height (30vh / 2 = 15vh) */
-    /* Using -14vh to leave a slight bit of rock visible or account for image aspect ratio */
+    opacity: 1; 
     transform: translateZ(50px) translateY(-14vh); 
 }
 
 @keyframes fadeInElement {
     from {
         opacity: 0;
-        /* Apply the current transform and then an additional offset for the start of the animation */
         transform: translateY(30px) var(--current-transform); 
     }
     to {
         opacity: 1;
-        /* End at the statically defined current transform */
         transform: var(--current-transform); 
     }
 }
 
 .rock-image-container img {
-    max-width: 30%;  /* Rock image much smaller */
-    max-height: 30vh; /* Rock image much smaller */
+    max-width: 30%;  
+    max-height: 30vh; 
     object-fit: contain;
     filter: drop-shadow(0 0 15px rgba(150, 150, 220, 0.3)); 
 }
 
-/* Loading/Error Message Styling */
 .loading-message {
     display: flex;
     justify-content: center;
@@ -195,24 +181,22 @@
     background-color: var(--background-dark-red, #1a1a2e);
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .guest-scene {
-        flex-direction: column !important; /* Stack rock and details vertically */
-        justify-content: center; /* Center items when stacked */
+        flex-direction: column !important; 
+        justify-content: center; 
         padding: 20px;
     }
 
-    .guest-scene::after { /* Ensure this is removed or display: none if it was missed */
+    .guest-scene::after { 
         display: none; 
     }
 
     .rock-image-container,
     .guest-details-main-container {
-        /* Reset transforms for stacked layout if they interfere */
-        --current-transform: translateY(0); /* Reset for mobile animation */
+        --current-transform: translateY(0); 
         transform: var(--current-transform) !important; 
-        align-self: center; /* Center horizontally in column layout */
+        align-self: center; 
     }
 
     @keyframes fadeInElementMobile {
@@ -227,34 +211,34 @@
     }
 
     .rock-image-container {
-        max-height: 25vh; /* Adjusted for smaller rock on mobile */
+        max-height: 25vh; 
         animation: fadeInElementMobile 0.8s 0.2s forwards ease-out;
-        transform: none !important; /* Ensure no static transform */
+        transform: none !important; 
     }
 
     .rock-image-container img {
-        max-height: 20vh; /* Further adjust rock image on small screens */
-        max-width: 50%; /* Adjusted for smaller rock on mobile */
+        max-height: 20vh; 
+        max-width: 50%; 
     }
 
     .guest-details-main-container {
         animation: fadeInElementMobile 0.8s 0.4s forwards ease-out;
-        transform: none !important; /* Ensure no static transform */
+        transform: none !important; 
     }
 
     .guest-details-container {
-        flex-direction: column; /* Stack image and text vertically on small screens */
+        flex-direction: column; 
         align-items: center;
         text-align: center;
-        padding: 15px; /* Adjust padding for smaller cards */
+        padding: 15px; 
     }
 
     .guest-image {
         margin-right: 0;
         margin-bottom: 15px;
-        height: 120px; /* Adjusted size for mobile */
-        width: 120px;  /* Adjusted size for mobile */
-        border-radius: 8px; /* Consistent rounded corners */
+        height: 120px; 
+        width: 120px;  
+        border-radius: 8px; 
     }
 
     .guest-text-content {
@@ -270,7 +254,7 @@
     }
     .guest-details-container p {
         font-size: clamp(0.75rem, 2.8vw, 0.95rem);
-        max-height: 28vh; /* Adjust description height on mobile */
+        max-height: 28vh; 
     }
 
     .guest-details-container .guest-text-content a {

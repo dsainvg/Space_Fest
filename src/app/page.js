@@ -1,12 +1,11 @@
-'use client'; // Still needed if you have client-side interactions on this page, otherwise can be removed.
+'use client';
 
 import React from 'react';
-// CSS imports (index.css, colour.css) are now handled by layout.js
 
 export default function Page() {
     return (
-        <div className="page-wrapper"> {/* Main page wrapper for specific page layout */}
-            <div className="content-wrapper"> {/* Content wrapper */}
+        <div className="page-wrapper"> 
+            <div className="content-wrapper"> 
                 <div className="event-title">
                     National Students&apos; Space Challenge 2025
                 </div>
@@ -24,7 +23,7 @@ export default function Page() {
                         Login
                     </button>
                 </div>
-                {/* Other page content would go here */}
+                
             </div>
         </div>
     );

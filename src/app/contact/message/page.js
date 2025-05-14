@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import '../../colour.css';
-import '../contact.css'; // Reusing contact.css for styles
+import '../contact.css';
 
 export default function MessageSentPage() {
   return (

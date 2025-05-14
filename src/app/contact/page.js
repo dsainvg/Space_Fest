@@ -1,20 +1,20 @@
 'use client';
 import '../colour.css'
 import './contact.css'
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation'; 
 
 export default function ContactPage(){
-    const router = useRouter(); // Initialize router
+    const router = useRouter(); 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Simple validation example (can be more robust)
+        
         const name = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const message = document.getElementById("message").value;
 
         if (!name || !email || !message) {
-            alert("Please fill in all fields."); // Or use a more styled notification
+            alert("Please fill in all fields."); 
             return;
         }
         
@@ -24,7 +24,7 @@ export default function ContactPage(){
             message: message}
             )
         );
-        // Redirect to the success message page
+        
         router.push('/contact/message');
     };
 
@@ -54,7 +54,6 @@ export default function ContactPage(){
                     <div className="contact-rightpart">
                         <h2>Contact Information</h2>
                         <div className="contact-info-item">
-                            {/* Placeholder for an icon, e.g., using an SVG or font icon library */}
                             <span className="contact-icon">📍</span> 
                             <p>123 Future Tech Avenue, Innovation City, IC 45678</p>
                         </div>

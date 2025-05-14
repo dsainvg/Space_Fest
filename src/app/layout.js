@@ -1,10 +1,9 @@
-'use client'; // Required for useEffect and useRef in Next.js App Router
+'use client'; 
 
 import React, { useEffect, useRef } from 'react';
-import './index.css'; // Import global styles, including particle styles
-import './colour.css'; // Import color variables
+import './index.css'; 
+import './colour.css'; 
 
-// Particle generation constants (can be adjusted or moved to a config file)
 const NUM_PARTICLES_TARGET = 100;
 const PARTICLE_ADD_INTERVAL = 100;
 const PARTICLES_PER_INTERVAL = 3;
@@ -24,16 +23,13 @@ export default function RootLayout({ children ,navbar}) {
       particle.classList.add('shower-particle');
 
       const screenWidth = window.innerWidth;
-      // Distribute particles across the entire screen width
       const xPosition = (Math.random()) * screenWidth;
 
       const duration = 0.8 + Math.random() * 1.2;
       const delay = Math.random() * 3;
-      // Angle: Make them fall diagonally to the right.
-      // Base angle around 30 degrees from vertical (positive for rightward)
+
       const baseAngle = 30; 
-      // Small random variation (e.g., +/- 5 degrees for a slight natural sway)
-      const angleVariation = (Math.random() - 0.5) * 10; // Results in -5 to +5 degrees
+      const angleVariation = (Math.random() - 0.5) * 10; 
       const fallAngle = baseAngle + angleVariation;
 
       particle.style.left = `${xPosition}px`;
@@ -74,19 +70,16 @@ export default function RootLayout({ children ,navbar}) {
         }
       }
     };
-  }, []); // Empty dependency array: runs once on mount, cleans up on unmount
+  }, []); 
 
   return (
     <html lang="en">
       <body>
-        {/* Render the Navbar component here */}
         <div 
-          key="root-layout-shower-container" // Modified key to be more specific
+          key="root-layout-shower-container" 
           id="shower-container" 
           ref={showerContainerRef}
-          // Styles for shower-container are in index.css
         ></div>
-        {/* The children prop will be the content of your pages */}
         <div className="page-wrapper"
             key={"root-layout-page-wrapper"}>
                 {children}
