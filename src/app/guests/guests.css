@@ -254,7 +254,7 @@
     }
     .guest-details-container p {
         font-size: clamp(0.75rem, 2.8vw, 0.95rem);
-        max-height: 28vh; 
+        max-height: 25vh; 
     }
 
     .guest-details-container .guest-text-content a {

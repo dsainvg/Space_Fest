@@ -35,7 +35,9 @@
     font-size: 24px;
     background: none;
     border: none;
+    color: var(--text-light);
     cursor: pointer;
+    padding: 5px;
 }
 
 .nav-links {
@@ -44,18 +46,27 @@
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
     .hamburger {
         display: block;
+        z-index: 1001; 
     }
 
     .nav-links {
         display: none;
         flex-direction: column;
+        align-items: center;
         width: 100%;
         position: absolute;
-        top: 60px;
+        top: 0; 
         left: 0;
-        padding: 10px 0;
+        background-color: rgba(40, 10, 10, 0.95); 
+        padding: 60px 0 20px 0; 
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        z-index: 1000;
     }
 
     .nav-links.open {
@@ -65,7 +76,18 @@
     .Linkbtn {
         width: 100%;
         text-align: center;
-        padding: 10px 0;
-        margin: 0;
+        padding: 12px 0;
+        margin: 5px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .Linkbtn:last-child {
+        border-bottom: none;
+    }
+
+    .Linkbtn:hover {
+        background-color: rgba(255,255,255,0.1);
+        transform: none;
+        scale: 1;
     }
 }

@@ -9,11 +9,11 @@
 }
 
 .placer{
-    height: 45px;
+    height: 60px;
 }
 
 @media screen and (max-width: 768px) {
     .placer {
-        height: 40px; 
+        height: 60px; 
     }
 }

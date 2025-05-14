@@ -160,19 +160,90 @@ select:focus {
 @media (max-width: 768px) {
     .maintitle {
         font-size: 2.2rem;
+        margin-bottom: 20px;
     }
     .contact-lowerpart {
         flex-direction: column;
+        gap: 20px;
     }
 
     .contact-leftpart,
     .contact-rightpart {
         width: 100%;
         margin-bottom: 20px;
+        padding: 15px;
     }
     .contact-leftpart:last-child,
     .contact-rightpart:last-child {
         margin-bottom: 0;
+    }
+    .contact-leftpart h2,
+    .contact-rightpart h2 {
+        font-size: 1.5rem;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        font-size: 0.9rem;
+    }
+    .submit-button {
+        width: 100%;
+        font-size: 1rem;
+        padding: 12px;
+    }
+    .contact-info-item {
+        font-size: 0.9rem;
+    }
+    .contact-icon {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .message-title {
+        font-size: 2rem;
+    }
+    .message-text {
+        font-size: 1rem;
+    }
+    .message-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+        width: calc(100% - 40px);
+        max-width: 250px;
+        box-sizing: border-box;
+    }
+    .message-container {
+        width: 90%;
+        padding: 30px 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .message-actions {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .maintitle {
+        font-size: 1.8rem;
+    }
+    .contact-leftpart h2,
+    .contact-rightpart h2 {
+        font-size: 1.3rem;
+    }
+
+    .message-title {
+        font-size: 1.6rem;
+    }
+    .message-text {
+        font-size: 0.9rem;
+    }
+    .message-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
     }
 }
 
@@ -257,9 +328,40 @@ select:focus {
     .message-button {
         font-size: 1rem;
         padding: 10px 20px;
+        width: calc(100% - 40px);
+        max-width: 250px;
+        box-sizing: border-box;
     }
     .message-container {
         width: 90%;
         padding: 30px 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .message-actions {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .maintitle {
+        font-size: 1.8rem;
+    }
+    .contact-leftpart h2,
+    .contact-rightpart h2 {
+        font-size: 1.3rem;
+    }
+
+    .message-title {
+        font-size: 1.6rem;
+    }
+    .message-text {
+        font-size: 0.9rem;
+    }
+    .message-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
     }
 }

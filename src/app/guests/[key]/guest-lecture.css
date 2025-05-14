@@ -111,6 +111,7 @@
         width: 95%;
         padding: 30px 15px;
         margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .lecture-title {
@@ -132,5 +133,33 @@
     .back-button {
         font-size: 1rem;
         padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .guest-lecture-container {
+        padding: 20px 10px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .lecture-title {
+        font-size: 1.7rem;
+    }
+    .lecture-speaker {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    .lecture-content {
+        font-size: 0.9rem;
+    }
+    .lecture-content h3 {
+        font-size: 1.2rem;
+    }
+    .lecture-content img {
+        max-height: 250px;
+    }
+    .back-button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
     }
 }
