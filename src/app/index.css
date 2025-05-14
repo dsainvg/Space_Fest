@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  border: 0;
+}
+body {
+  background-image: linear-gradient(10deg, 
+    var(--background-dark-red) 0%, 
+    color-mix(in srgb, var(--primary-deep-red) 30%, var(--background-dark-red) 70%) 10%, /* Adjusted from 15% */
+    var(--primary-deep-red) 20%, /* Adjusted from 30% */
+    color-mix(in srgb, var(--primary-deep-red) 60%, var(--secondary-fiery-orange) 40%) 35%, /* Adjusted from 45% */
+    var(--secondary-fiery-orange) 45%, /* Adjusted from 55%, orange starts even earlier */
+    color-mix(in srgb, var(--secondary-fiery-orange) 40%, var(--background-dark-red) 60%) 80%, /* Adjusted from 85%, defines end of prominent orange */
+    color-mix(in srgb, var(--background-dark-red) 80%, black 20%) 93%, /* Adjusted from 95% */
+    var(--text-dark) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text-light);
+  overflow-x: hidden; /* Prevent horizontal scrollbar from slightly off-screen particles */
+}
+
+#shower-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+  overflow: hidden; /* Particles outside viewport are clipped */
+  z-index: 0; /* Reverted from 2 */
+}
+
+.shower-particle {
+  position: absolute;
+  width: 2px; /* Thin streak */
+  height: 70px; /* Length of the streak */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%, /* Start transparent (top of particle) */
+    color-mix(in srgb, var(--accent-gold) 30%, transparent 70%) 20%, /* Start of fade-in for sparkle */
+    var(--accent-gold) 85%, /* Main bright color towards the tail */
+    color-mix(in srgb, var(--text-light) 60%, var(--accent-gold) 40%) 100% /* Brightest tip at the tail */
+  );
+  opacity: 0; /* Start invisible, animation handles fade-in */
+  
+  /* --fall-angle will be set by JavaScript */
+  /* The animation combines this rotation with translation */
+  animation-name: fallAndFade;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards; /* Keeps particle hidden (opacity: 0) after animation */
+  
+  /* transform-origin for rotation, if not handled by animation keyframes directly */
+  transform-origin: 50% 0%; /* Rotate around top-center */
+  box-shadow: 0 0 7px 1px color-mix(in srgb, var(--accent-gold) 35%, transparent);
+}
+
+@keyframes fallAndFade {
+  0% {
+    transform: rotate(var(--fall-angle)) translateY(-120px); /* Rotate first, then translate along new Y-axis */
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9; /* Fade in */
+  }
+  90% {
+    opacity: 0.7; /* Start fading out */
+  }
+  100% {
+    transform: rotate(var(--fall-angle)) translateY(calc(100vh + 70px)); /* Rotate first, then translate */
+    opacity: 0;
+  }
+}
+
+/* Ensure content like h1 is above the shower effect */
+h1 { /* Example, apply to your main content containers */
+    position: relative;
+    z-index: 1;
+}
+
+/* New styles for page content */
+.page-wrapper {
+  position: relative;
+  z-index: 1; /* Ensure page content is above the shower-container */
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1; /* Reverted from 3 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensure content is centered vertically */
+  text-align: center; /* Center text */
+  padding: 20px; /* Add some padding */
+  font-family: 'Exo 2', sans-serif; /* Default font for content wrapper */
+}
+
+.event-title {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-light); /* Ensure text color is set */
+  font-family: 'Exo 2', sans-serif; /* Consistent with other text */
+}
+
+.main-heading {
+  margin-bottom: 1.5rem;
+  font-size: 4rem; /* Slightly increased size */
+  font-weight: 700; /* Orbitron bold */
+  color: var(--accent-gold); /* Example: Use accent color for main heading */
+  font-family: 'Orbitron', sans-serif; /* Futuristic font */
+  text-transform: uppercase; /* Often looks good with such fonts */
+  letter-spacing: 2px; /* Add some letter spacing */
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent-gold) 50%, transparent); /* Enhanced glow */
+}
+
+.tagline {
+  margin-bottom: 3rem;
+  font-size: 1.9rem; /* Slightly increased size */
+  color: var(--text-light);
+  font-family: 'Exo 2', sans-serif; /* Elegant futuristic font */
+  font-weight: 300; /* Lighter weight for tagline */
+  letter-spacing: 1px;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-dark);
+  background-color: var(--accent-gold);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.action-button:hover {
+  background-color: color-mix(in srgb, var(--accent-gold) 85%, var(--text-light) 15%); /* Slightly lighter gold */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Styles for Not Found Page */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px); /* Adjust if you have a fixed header/footer */
+  text-align: center;
+  padding: 20px;
+  color: var(--text-light);
+  font-family: 'Exo 2', sans-serif;
+  position: relative;
+  z-index: 1; /* Ensure it's above background particles */
+}
+
+.not-found-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 6rem; /* Large and impactful */
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent-gold) 50%, transparent);
+}
+
+.not-found-message {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: var(--secondary-fiery-orange);
+  margin-bottom: 1rem;
+}
+
+.not-found-description {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.not-found-link {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-dark);
+  background-color: var(--accent-gold);
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.not-found-link:hover {
+  background-color: color-mix(in srgb, var(--accent-gold) 85%, var(--text-light) 15%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}

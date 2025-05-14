@@ -1,0 +1,292 @@
+.interactive-guest-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Enables smooth vertical snapping */
+    background-color: transparent; /* Changed from dark-red to transparent */
+    color: var(--text-light, #e0e0e0); /* Fallback light text */
+    font-family: 'Exo 2', sans-serif;
+}
+
+.guest-scene {
+    position: relative; /* Ensure proper stacking context */
+    display: flex;
+    flex-direction: column; /* Ensure rock is above details */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Hide rock when off-screen */
+    perspective: 1000px;
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.guest-details-container {
+    display: flex;
+    flex-direction: row; /* Ensures image and text block are side-by-side */
+    justify-content: center;
+    align-items: center; /* Vertically aligns image and text block */
+    padding: 20px;
+    background-color: transparent; /* Changed for text to appear on rock */
+    max-width: 85dvw; /* Increased card width further */
+    min-height: 400px; /* Ensure enough height for content */
+}
+
+.guest-image {
+    height: 225px; /* Increased size */
+    width: 225px;  /* Increased size */
+    border-radius: 10px; /* Rounded corners, no longer circular */
+    object-fit: cover;
+    margin-right: 20px; /* Space between guest image and text block */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+}
+
+.guest-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Aligns text to the left */
+    text-align: left; /* Ensures text within this block is left-aligned */
+    flex: 1; /* Allows text content to take up available space */
+}
+
+.guest-details-container h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-gold, #FFD700);
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem); /* Slightly adjusted font size */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7), 0 0 8px color-mix(in srgb, var(--accent-gold, #FFD700) 50%, transparent); /* Enhanced for readability */
+}
+
+.guest-details-container h3 {
+    font-family: 'Exo 2', sans-serif;
+    color: var(--secondary-fiery-orange, #FF8C00);
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem); /* Slightly adjusted font size */
+    margin-bottom: 8px;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Added for readability */
+}
+
+.guest-details-container p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: clamp(0.85rem, 1.8vw, 1.05rem); 
+    line-height: 1.6;
+    color: var(--text-light, #f0f0f0);
+    max-height: 28vh; /* Increased max-height for more text space */
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Added for readability */
+}
+
+.guest-text-content a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: var(--accent-gold, #FFD700);
+    color: var(--text-dark, #3D1212); /* Dark text for contrast on gold */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.guest-text-content a:hover,
+.guest-text-content a:focus {
+    background-color: color-mix(in srgb, var(--accent-gold, #FFD700) 85%, var(--text-light, #f0f0f0) 15%);
+    transform: translateY(-2px); /* Slight lift on hover/focus */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.rock-image-container {
+    /* Removed absolute positioning, top, left, z-index, filter: blur */
+    /* It's now a flex item */
+    opacity: 0; /* Start hidden */
+    transform: translateY(-100vh) scale(0.7); /* Start far above and smaller */
+    will-change: transform, opacity;
+    /* Ensure it doesn't push content too much, adjust as needed */
+    margin-bottom: 0px; /* Reset to a simple value, or small positive like 10px if a slight gap before overlap is desired */
+    /* transition is not needed here as animation handles it */
+}
+
+.guest-scene.active-scene .rock-image-container {
+    animation: rock-fall 2.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards; /* Slightly longer duration for more pronounced effect */
+    animation-delay: 0.1s; /* Slight delay before rock falls */
+}
+
+@keyframes rock-fall {
+    0% {
+        opacity: 0;
+        transform: translateY(-110vh) scale(0.6) rotate(-25deg); /* Start further up, smaller, more rotation */
+    }
+    45% {
+        /* Falling past the card, towards the bottom of the 100vh scene */
+        opacity: 1;
+        transform: translateY(80vh) scale(1.2) rotate(20deg); /* Increased fall distance, adjusted scale/rotation */
+    }
+    65% {
+        /* Bouncing back up - first major bounce from a lower point */
+        transform: translateY(-25vh) scale(0.85) rotate(-15deg); 
+    }
+    80% {
+        /* Second smaller bounce, settling */
+        transform: translateY(10vh) scale(1.08) rotate(8deg);
+    }
+    90% {
+        /* Almost settled */
+        transform: translateY(-4vh) scale(0.97) rotate(-3deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg); /* Final resting position */
+    }
+}
+
+.guest-details-main-container {
+    position: relative; /* Ensure it stacks above the rock */
+    z-index: 1; /* Place above the rock, ensuring it's in front for the overlap */
+    opacity: 0; /* Hidden by default */
+    transform: translateZ(50px) translateY(30px); /* Start slightly further down to make the upward movement more noticeable */
+    /* Updated transition with delay and custom easing for transform */
+    transition: opacity 0.6s ease-in-out 1.5s, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s; 
+    will-change: opacity, transform; /* Optimize for animations */
+}
+
+.guest-details-main-container.active-details {
+    opacity: 1; /* Visible when active */
+    /* Pull the container up by approx. half the rock's max-height (30vh / 2 = 15vh) */
+    /* Using -14vh to leave a slight bit of rock visible or account for image aspect ratio */
+    transform: translateZ(50px) translateY(-14vh); 
+}
+
+@keyframes fadeInElement {
+    from {
+        opacity: 0;
+        /* Apply the current transform and then an additional offset for the start of the animation */
+        transform: translateY(30px) var(--current-transform); 
+    }
+    to {
+        opacity: 1;
+        /* End at the statically defined current transform */
+        transform: var(--current-transform); 
+    }
+}
+
+.rock-image-container img {
+    max-width: 30%;  /* Rock image much smaller */
+    max-height: 30vh; /* Rock image much smaller */
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(150, 150, 220, 0.3)); 
+}
+
+/* Loading/Error Message Styling */
+.loading-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: var(--text-light, #e0e0e0);
+    font-family: 'Exo 2', sans-serif;
+    background-color: var(--background-dark-red, #1a1a2e);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .guest-scene {
+        flex-direction: column !important; /* Stack rock and details vertically */
+        justify-content: center; /* Center items when stacked */
+        padding: 20px;
+    }
+
+    .guest-scene::after { /* Ensure this is removed or display: none if it was missed */
+        display: none; 
+    }
+
+    .rock-image-container,
+    .guest-details-main-container {
+        /* Reset transforms for stacked layout if they interfere */
+        --current-transform: translateY(0); /* Reset for mobile animation */
+        transform: var(--current-transform) !important; 
+        align-self: center; /* Center horizontally in column layout */
+    }
+
+    @keyframes fadeInElementMobile {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .rock-image-container {
+        max-height: 25vh; /* Adjusted for smaller rock on mobile */
+        animation: fadeInElementMobile 0.8s 0.2s forwards ease-out;
+        transform: none !important; /* Ensure no static transform */
+    }
+
+    .rock-image-container img {
+        max-height: 20vh; /* Further adjust rock image on small screens */
+        max-width: 50%; /* Adjusted for smaller rock on mobile */
+    }
+
+    .guest-details-main-container {
+        animation: fadeInElementMobile 0.8s 0.4s forwards ease-out;
+        transform: none !important; /* Ensure no static transform */
+    }
+
+    .guest-details-container {
+        flex-direction: column; /* Stack image and text vertically on small screens */
+        align-items: center;
+        text-align: center;
+        padding: 15px; /* Adjust padding for smaller cards */
+    }
+
+    .guest-image {
+        margin-right: 0;
+        margin-bottom: 15px;
+        height: 120px; /* Adjusted size for mobile */
+        width: 120px;  /* Adjusted size for mobile */
+        border-radius: 8px; /* Consistent rounded corners */
+    }
+
+    .guest-text-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .guest-details-container h2 {
+        font-size: clamp(1.4rem, 4.5vw, 1.8rem);
+    }
+    .guest-details-container h3 {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+    }
+    .guest-details-container p {
+        font-size: clamp(0.75rem, 2.8vw, 0.95rem);
+        max-height: 28vh; /* Adjust description height on mobile */
+    }
+
+    .guest-details-container .guest-text-content a {
+        display: inline-block;
+        padding: 8px 15px;
+        margin-top: 10px;
+        background-color: var(--accent-gold, #FFD700);
+        color: var(--text-dark, #3D1212);
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        transition: background-color 0.3s ease;
+    }
+
+    .guest-details-container .guest-text-content a:hover {
+        background-color: color-mix(in srgb, var(--accent-gold, #FFD700) 85%, var(--text-light, #f0f0f0) 15%);
+    }
+}

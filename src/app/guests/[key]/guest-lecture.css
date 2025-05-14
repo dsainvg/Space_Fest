@@ -1,0 +1,136 @@
+.guest-lecture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px; /* Increased top/bottom padding */
+    color: var(--text-light);
+    font-family: 'Exo 2', sans-serif;
+    width: 90%;
+    max-width: 900px; /* Slightly narrower for focused content */
+    margin: 30px auto; /* Centering the container */
+    background-color: rgba(0, 0, 0, 0.45); /* Slightly more opaque for readability */
+    border-radius: 12px; /* Slightly larger radius */
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    position: relative; /* For potential absolute positioned elements inside */
+    z-index: 2; /* Ensure it's above background elements if any */
+}
+
+.lecture-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem; /* Prominent title */
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent-gold) 60%, transparent);
+}
+
+.lecture-speaker {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.5rem;
+    color: var(--secondary-fiery-orange);
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.lecture-content {
+    width: 100%;
+    max-width: 800px; /* Content width */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    text-align: left; /* Default for content blocks */
+}
+
+.lecture-content h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--secondary-fiery-orange);
+    font-size: 1.6rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.lecture-content p {
+    margin-bottom: 15px;
+}
+
+.lecture-content ul,
+.lecture-content ol {
+    margin-bottom: 15px;
+    padding-left: 30px; /* Indentation for lists */
+}
+
+.lecture-content li {
+    margin-bottom: 8px;
+}
+
+.lecture-content a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.lecture-content a:hover {
+    color: color-mix(in srgb, var(--accent-gold) 80%, var(--text-light) 20%);
+    text-decoration: underline;
+}
+
+.back-button-container {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.back-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-dark);
+    background-color: var(--accent-gold);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.back-button:hover {
+    background-color: color-mix(in srgb, var(--accent-gold) 85%, var(--text-light) 15%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .guest-lecture-container {
+        width: 95%;
+        padding: 30px 15px;
+        margin-top: 20px;
+    }
+
+    .lecture-title {
+        font-size: 2rem; /* Adjusted title size */
+    }
+
+    .lecture-speaker {
+        font-size: 1.2rem;
+    }
+
+    .lecture-content {
+        font-size: 1rem; /* Adjusted content font size */
+    }
+
+    .lecture-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .back-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
